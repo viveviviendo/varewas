@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const features = [
+  {
+    title: "Swiss Compliance",
+    description: "Built on Swiss DLT law standards, ensuring full regulatory compliance for your digital assets.",
+    icon: "🇨🇭"
+  },
+  {
+    title: "Bank-Grade Security",
+    description: "Enterprise-level security infrastructure protecting your assets and data at all times.",
+    icon: "🔒"
+  },
+  {
+    title: "Instant Settlement",
+    description: "Experience T+0 settlement cycles with automated smart contract execution.",
+    icon: "⚡"
+  },
+  {
+    title: "Global Liquidity",
+    description: "Access a global network of investors and trading venues for your tokenized assets.",
+    icon: "🌍"
+  },
+  {
+    title: "Smart Contracts",
+    description: "Automated compliance, distribution, and management via audited smart contracts.",
+    icon: "📜"
+  },
+  {
+    title: "Asset Dashboard",
+    description: "Real-time monitoring and management of your tokenized portfolio.",
+    icon: "📊"
+  }
+];
+---
+
+<Layout title="Features | VAREWAS">
+  <section class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h1 class="text-gradient">Platform Features</h1>
+        <p>Everything you need to tokenize and manage real-world assets.</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map(feature => (
+          <FeatureCard 
+            title={feature.title} 
+            description={feature.description} 
+            icon={feature.icon} 
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 8rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>

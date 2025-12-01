@@ -1,0 +1,73 @@
+---
+---
+<header class="header glass-panel">
+  <div class="container">
+    <a href="/" class="logo">
+      VAREWAS<span class="dot">.</span>
+    </a>
+    
+    <nav class="nav-links">
+      <a href="/features">Features</a>
+      <a href="/process">Process</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    height: 70px;
+    border-radius: var(--radius-full);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .dot {
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text-main);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="brand">
+        <span class="logo">VAREWAS<span class="dot">.</span></span>
+        <p>Digital asset structuring and tokenization platform.</p>
+      </div>
+      
+      <div class="links">
+        <div class="col">
+          <h4>Platform</h4>
+          <a href="/features">Features</a>
+          <a href="#">Security</a>
+          <a href="#">Pricing</a>
+        </div>
+        <div class="col">
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="#">Careers</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Imprint</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} VAREWAS. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--color-border);
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .brand {
+    max-width: 300px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .dot { color: var(--color-primary); }
+
+  .brand p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .links {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  h4 {
+    color: var(--color-text-main);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 3rem;
+    }
+    
+    .links {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  }
+</style>

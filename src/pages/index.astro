@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout title="VAREWAS | Premium Tokenization Platform">
+  <Hero />
+  
+  <section class="intro-section">
+    <div class="container">
+      <div class="glass-panel intro-card">
+        <h2 class="text-gradient">The Infrastructure for Digital Assets</h2>
+        <p>
+          VAREWAS provides a complete suite of tools for compliant asset tokenization.
+          From legal structuring to technical issuance and lifecycle management.
+        </p>
+        <div class="btn-group">
+          <a href="/features" class="btn-primary neon-glow">Explore Platform</a>
+          <a href="/contact" class="btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .intro-section {
+    padding: 0 0 2rem; /* Reduced bottom padding to bring footer closer */
+    position: relative;
+    margin-top: 2rem; /* Added positive margin to separate from Hero */
+    z-index: 10;
+  }
+
+  .intro-card {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: var(--radius-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(10px);
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gradient-main);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    transition: background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+</style>

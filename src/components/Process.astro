@@ -1,0 +1,65 @@
+---
+const steps = [
+  {
+    icon: "🚀",
+    title: "Inicio del proyecto",
+    description: "Analizamos tus activos y definimos el tipo de tokenización adecuada."
+  },
+  {
+    icon: "🔗",
+    title: "Estructuración legal",
+    description: "Creamos la arquitectura legal necesaria para cumplir con normativa europea y suiza."
+  },
+  {
+    icon: "💼",
+    title: "Despliegue tecnológico",
+    description: "Generamos los smart contracts, controles de seguridad y almacenamiento descentralizado."
+  },
+  {
+    icon: "📈",
+    title: "Publicación y operación",
+    description: "El activo tokenizado se pone en funcionamiento, con panel de control y reporting."
+  }
+];
+---
+
+<section class="process">
+  <h2>Nuestro Proceso</h2>
+
+  <div class="process__grid">
+    {steps.map((step, index) => (
+      <div key={index} class="process__step">
+        <div class="process__icon">
+          <span class="icon" aria-hidden="true">{step.icon}</span>
+        </div>
+
+        <h3 class="process__step-title">{step.title}</h3>
+        <p class="process__step-description">{step.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: 4rem 2rem;
+  }
+  .process__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .process__step {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+  .process__icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .process__step-title {
+    margin-bottom: 0.5rem;
+  }
+</style>

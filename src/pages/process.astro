@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Process | VAREWAS">
+  <section class="page-section">
+    <div class="container">
+      <h1 class="text-gradient">Our Process</h1>
+      <p>How we tokenize real-world assets.</p>
+      
+      <div class="steps-grid">
+        <div class="step-card glass-panel">
+          <div class="step-number">01</div>
+          <h3>Structuring</h3>
+          <p>Legal and financial structuring of the SPV.</p>
+        </div>
+        <div class="step-card glass-panel">
+          <div class="step-number">02</div>
+          <h3>Issuance</h3>
+          <p>Smart contract deployment and token minting.</p>
+        </div>
+        <div class="step-card glass-panel">
+          <div class="step-number">03</div>
+          <h3>Distribution</h3>
+          <p>Primary market offering to qualified investors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-section {
+    padding: 8rem 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--color-text-muted);
+    margin-bottom: 4rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .step-card {
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    text-align: left;
+  }
+
+  .step-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+  }
+</style>
