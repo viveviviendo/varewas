@@ -3,16 +3,25 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Contact | VAREWAS">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
   <section class="contact-section">
     <div class="container">
       <div class="content-wrapper glass-panel">
         <h1 class="text-gradient">Get in Touch</h1>
         <p>Interested in tokenizing your assets? Let's talk.</p>
         
-        <form class="contact-form" action="https://formsubmit.co/mariano@solarxquare.com" method="POST">
+        <div id="success-message" class="success-message" style="display: none;">
+          <div class="success-icon">✓</div>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. We'll get back to you shortly.</p>
+          <button onclick="window.location.href='/contact'" class="btn-secondary">Send Another</button>
+        </div>
+
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/mariano@solarxquare.com" method="POST">
           <!-- Honeypot -->
           <input type="text" name="_honey" style="display:none">
-          <!-- Disable Captcha -->
+          <!-- Disable Captcha (using Turnstile instead) -->
           <input type="hidden" name="_captcha" value="false">
           <!-- Success Page -->
           <input type="hidden" name="_next" value="http://localhost:4321/contact?success=true">
@@ -31,6 +40,9 @@ import Layout from '../layouts/Layout.astro';
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
           </div>
+
+          <!-- Cloudflare Turnstile -->
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAACA0C542KSjebsu" data-theme="dark"></div>
           
           <button type="submit" class="btn-primary neon-glow">Send Message</button>
         </form>
@@ -38,6 +50,20 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<script>
+  // Check for success parameter in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('success') === 'true') {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    
+    if (form && successMessage) {
+      form.style.display = 'none';
+      successMessage.style.display = 'flex';
+    }
+  }
+</script>
 
 <style>
   .contact-section {
@@ -114,5 +140,40 @@ import Layout from '../layouts/Layout.astro';
 
   .btn-primary:hover {
     transform: translateY(-2px);
+  }
+
+  .success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px var(--color-accent);
+  }
+
+  .cf-turnstile {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
