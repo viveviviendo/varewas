@@ -1,8 +1,35 @@
----
-// Simple redirection to default language or browser detected language
-// In a static build, this might be handled by headers or a client-side script. 
-// For now, server-side redirection (Astro SSR) or client-side meta refresh.
-
-const defaultLang = 'en';
-return Astro.redirect(`/${defaultLang}`);
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAREWAS</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #14110f;
+      visibility: hidden; /* Hide everything during redirect */
+    }
+  </style>
+  <script>
+    // Instant redirect - executes before page renders
+    (function() {
+      const supportedLangs = ['en', 'es', 'fr'];
+      const defaultLang = 'en';
+      
+      // Get browser language
+      const browserLang = navigator.language.split('-')[0].toLowerCase();
+      
+      // Use browser language if supported, otherwise default
+      const targetLang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
+      
+      // Immediate redirect
+      window.location.replace(`/${targetLang}`);
+    })();
+  </script>
+</head>
+<body>
+  <!-- Empty body - redirect happens before render -->
+</body>
+</html>
