@@ -59,7 +59,7 @@ export const ui = {
         'final.text': 'Your asset.',
         'final.subtext': 'Tell us what you have. We’ll tell you if tokenization makes sense.',
 
-        'cta.tell_us': 'Tell us about your asset',
+        'cta.tell_us': 'Tell us about your project',
         'cta.contact': 'Contact',
         'cta.subscribe_text': 'Receive real insights about tokenization applied to real life. No hype. No noise.',
         'cta.subscribe_btn': 'Subscribe',

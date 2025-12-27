@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const t = ui[lang];
+const t = ui[lang] || ui['en']; // Fallback to 'en' if lang is invalid
 ---
 
 <footer class="footer section" data-theme-section="light">
