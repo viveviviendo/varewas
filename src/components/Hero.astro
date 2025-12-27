@@ -18,11 +18,13 @@ const t = ui[lang];
 </ScrollSection>
 
 <style>
-  .hero-section {
-    min-height: 80vh; /* Reduced from 90vh */
+  :global(.hero-section) {
+    min-height: 60vh;
     display: flex;
-    align-items: center;
-    padding-bottom: 0 !important; /* Force no padding at bottom */
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 45vh !important; /* Shifting text UP to match 25vh gradient center */
   }
   .mb-8 { margin-bottom: 2rem; }
   .opacity-80 { opacity: 0.8; }

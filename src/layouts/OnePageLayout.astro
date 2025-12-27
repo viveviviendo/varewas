@@ -94,16 +94,12 @@ const { title, description, lang } = Astro.props;
                 font-weight: 700;
                 font-size: 1.25rem;
                 text-decoration: none;
-                color: white;
-                mix-blend-mode: difference; /* Smart way to ensure visibility */
+                color: #ff5622; /* Vibrant Orange */
                 letter-spacing: -0.05em;
             }
 
             /* Fallback manual color switch */
-            .fixed-logo.dark-text {
-                color: var(--color-black);
-                mix-blend-mode: normal;
-            }
+            /* Removed as logo is now permanently orange */
 
             /* Global Text Color modifier */
             :global(body.light-theme-active) {

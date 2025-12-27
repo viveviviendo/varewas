@@ -67,14 +67,13 @@ body {
        - 15-60%: Extended Smooth Transition (Avoids lines)
        - 60-100%: Warm White
     */
-    background: linear-gradient(to bottom,
-            var(--color-black) 0%,
-            var(--color-black) 15%,
-            #eaeaeb 35%,
-            /* Midpoint gray to soften edge */
-            var(--color-white) 60%,
-            #ffffff 95%,
-            #ffffff 100%);
+    background: radial-gradient(ellipse 120vw 90vh at 50% 25vh,
+            #2a2a2a 0%,
+            #14110f 40%,
+            #faf8f6 100%);
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    /* Ensures the rest of the page is pure white */
     min-height: 100vh;
 }
 
@@ -149,6 +148,10 @@ h6 {
 }
 
 /* Layout Utilities */
+.hero-section {
+    min-height: 100vh !important;
+}
+
 .container {
     width: 100%;
     max-width: var(--spacing-container);
