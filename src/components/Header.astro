@@ -1,16 +1,51 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { languages, ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.currentLocale || defaultLang;
+
+function getCurrentPathForLocale(locale: string) {
+  const currentPath = Astro.url.pathname;
+  const currentLang = Astro.currentLocale || defaultLang;
+  
+  // Remove current lang prefix if present
+  let cleanPath = currentPath.replace(new RegExp(`^/${currentLang}`), '');
+  if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+  
+  if (locale === defaultLang) {
+    return `/en${cleanPath}`;
+  }
+  return `/${locale}${cleanPath}`;
+}
+
+const t = ui[lang as keyof typeof ui] || ui[defaultLang];
 ---
+
 <header class="header glass-panel">
   <div class="container">
-    <a href="/" class="logo">
+    <a href={getRelativeLocaleUrl(lang, '/')} class="logo">
       VAREWAS<span class="dot">.</span>
     </a>
     
     <nav class="nav-links">
-      <a href="/features">Features</a>
-      <a href="/process">Process</a>
-      <a href="/contact">Contact</a>
+      <a href={getRelativeLocaleUrl(lang, 'features')}>{t['nav.features']}</a>
+      <a href={getRelativeLocaleUrl(lang, 'process')}>{t['nav.process']}</a>
+      <a href={getRelativeLocaleUrl(lang, 'contact')}>{t['nav.contact']}</a>
     </nav>
+
+    <div class="lang-selector">
+      {Object.entries(languages).map(([key, label], index) => (
+        <>
+          <a 
+            href={getCurrentPathForLocale(key)} 
+            class={`lang-link ${lang === key ? 'active' : ''}`}
+          >
+            {label}
+          </a>
+          {index < Object.keys(languages).length - 1 && <span class="separator">|</span>}
+        </>
+      ))}
+    </div>
   </div>
 </header>
 
@@ -63,6 +98,33 @@
 
   .nav-links a:hover {
     color: var(--color-text-main);
+  }
+
+  .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 2rem; /* Separate from nav links */
+  }
+
+  .lang-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+
+  .lang-link:hover, .lang-link.active {
+    color: var(--color-text-main);
+    opacity: 1;
+  }
+
+  .separator {
+    color: var(--color-border);
+    font-size: 0.85rem;
   }
 
   @media (max-width: 768px) {

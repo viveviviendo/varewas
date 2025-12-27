@@ -1,4 +1,8 @@
 ---
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.currentLocale || defaultLang;
+const t = ui[lang as keyof typeof ui] || ui[defaultLang];
 ---
 <section class="hero">
   <div class="container hero-container">
@@ -9,18 +13,16 @@
       </div>
       
       <h1 class="text-gradient">
-        The Future of <br/>
-        Real World Assets
+        {t['hero.title']}
       </h1>
       
       <p class="hero-text">
-        Structure, issue, and manage digital assets with Swiss compliance. 
-        VAREWAS bridges the gap between traditional finance and blockchain technology.
+        {t['hero.subtitle']}
       </p>
 
       <div class="cta-group">
-        <a href="#start" class="btn-primary neon-glow">Start Tokenizing</a>
-        <a href="#learn" class="btn-secondary">Learn More</a>
+        <a href="#start" class="btn-primary neon-glow">{t['hero.start']}</a>
+        <a href="#learn" class="btn-secondary">{t['hero.learn']}</a>
       </div>
     </div>
 
@@ -28,24 +30,24 @@
       <div class="glass-card project-card">
         <div class="card-header">
           <span class="status-dot pulsing"></span>
-          <span class="card-title">Last Project</span>
+          <span class="card-title">{t['project.last']}</span>
         </div>
         <div class="card-body">
-          <div class="token-amount">AI</div>
-          <div class="token-label">Asset AI Verification SaaS</div>
+          <div class="token-amount">{t['project.ai']}</div>
+          <div class="token-label">{t['project.saas']}</div>
         </div>
         <div class="card-footer">
           <div class="progress-bar">
             <div class="progress" style="width: 75%"></div>
           </div>
-          <span class="success-text">In Development</span>
+          <span class="success-text">{t['project.dev']}</span>
         </div>
       </div>
 
       <div class="glass-card project-card">
         <div class="card-header">
           <span class="status-dot"></span>
-          <span class="card-title">Previous Project</span>
+          <span class="card-title">{t['project.previous']}</span>
         </div>
         <div class="card-body">
           <div class="token-amount">34M</div>
@@ -55,7 +57,7 @@
           <div class="progress-bar">
             <div class="progress" style="width: 100%"></div>
           </div>
-          <span class="success-text">Successfully Issued</span>
+          <span class="success-text">{t['project.issued']}</span>
         </div>
       </div>
     </div>

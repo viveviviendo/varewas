@@ -1,0 +1,58 @@
+export const languages = {
+    en: 'EN',
+    es: 'ES',
+    fr: 'FR',
+};
+
+export const defaultLang = 'en';
+
+export const ui = {
+    en: {
+        'nav.features': 'Features',
+        'nav.process': 'Process',
+        'nav.contact': 'Contact',
+        'hero.title': 'The Future of Real World Assets',
+        'hero.subtitle': 'Structure, issue, and manage digital assets with Swiss compliance. VAREWAS bridges the gap between traditional finance and blockchain technology.',
+        'hero.start': 'Start Tokenizing',
+        'hero.learn': 'Learn More',
+        'project.new': 'New Project',
+        'project.last': 'Last Project',
+        'project.previous': 'Previous Project',
+        'project.ai': 'AI',
+        'project.saas': 'Asset AI Verification SaaS',
+        'project.dev': 'In Development',
+        'project.issued': 'Successfully Issued',
+    },
+    es: {
+        'nav.features': 'Funcionalidades',
+        'nav.process': 'Proceso',
+        'nav.contact': 'Contacto',
+        'hero.title': 'El Futuro de los Activos Reales',
+        'hero.subtitle': 'Estructure, emita y gestione activos digitales con cumplimiento suizo. VAREWAS une las finanzas tradicionales con la tecnología blockchain.',
+        'hero.start': 'Empezar a Tokenizar',
+        'hero.learn': 'Más Información',
+        'project.new': 'Nuevo Proyecto',
+        'project.last': 'Último Proyecto',
+        'project.previous': 'Proyecto Anterior',
+        'project.ai': 'IA',
+        'project.saas': 'SaaS de Verificación por IA',
+        'project.dev': 'En Desarrollo',
+        'project.issued': 'Emitido con Éxito',
+    },
+    fr: {
+        'nav.features': 'Fonctionnalités',
+        'nav.process': 'Processus',
+        'nav.contact': 'Contact',
+        'hero.title': 'L\'Avenir des Actifs Réels',
+        'hero.subtitle': 'Structurez, émettez et gérez des actifs numériques en conformité suisse. VAREWAS fait le pont entre la finance traditionnelle et la technologie blockchain.',
+        'hero.start': 'Commencer la Tokenisation',
+        'hero.learn': 'En Savoir Plus',
+        'project.new': 'Nouveau Projet',
+        'project.last': 'Dernier Projet',
+        'project.previous': 'Projet Précédent',
+        'project.ai': 'IA',
+        'project.saas': 'SaaS de Vérification par IA',
+        'project.dev': 'En Développement',
+        'project.issued': 'Émis avec Succès',
+    },
+} as const;
