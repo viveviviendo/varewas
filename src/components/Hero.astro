@@ -23,9 +23,17 @@ const t = ui[lang];
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 0;
+    padding-top: 5rem; /* Add top padding for mobile to avoid header overlap */
     padding-bottom: 45vh !important; /* Shifting text UP to match 25vh gradient center */
   }
+  
+  /* Desktop: remove extra top padding */
+  @media (min-width: 768px) {
+    :global(.hero-section) {
+      padding-top: 0;
+    }
+  }
+  
   .mb-8 { margin-bottom: 2rem; }
   .opacity-80 { opacity: 0.8; }
 </style>
