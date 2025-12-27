@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VAREWAS</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #14110f;
-      visibility: hidden; /* Hide everything during redirect */
-    }
-  </style>
-  <script>
-    // Instant redirect - executes before page renders
-    (function() {
-      const supportedLangs = ['en', 'es', 'fr'];
-      const defaultLang = 'en';
-      
-      // Get browser language
-      const browserLang = navigator.language.split('-')[0].toLowerCase();
-      
-      // Use browser language if supported, otherwise default
-      const targetLang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
-      
-      // Immediate redirect
-      window.location.replace(`/${targetLang}`);
-    })();
-  </script>
-</head>
-<body>
-  <!-- Empty body - redirect happens before render -->
-</body>
-</html>
+---
+// Server-side redirect - executes before any HTML is rendered
+const supportedLangs = ['en', 'es', 'fr'];
+const defaultLang = 'en';
+
+// Get browser language from Accept-Language header
+const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+const browserLang = acceptLanguage.split(',')[0].split('-')[0].toLowerCase();
+
+// Use browser language if supported, otherwise default
+const targetLang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
+
+// Server-side redirect (happens before any HTML is sent)
+return Astro.redirect(`/${targetLang}`);
+---
