@@ -1,4 +1,8 @@
 ---
-// Redirect to default locale
-return Astro.redirect('/en');
+// Simple redirection to default language or browser detected language
+// In a static build, this might be handled by headers or a client-side script. 
+// For now, server-side redirection (Astro SSR) or client-side meta refresh.
+
+const defaultLang = 'en';
+return Astro.redirect(`/${defaultLang}`);
 ---

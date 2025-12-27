@@ -1,0 +1,125 @@
+---
+import { ui } from '../i18n/ui';
+import LanguageSelector from '../components/LanguageSelector.astro';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+    description: string;
+    lang: 'en' | 'es' | 'fr';
+}
+
+const { title, description, lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+        <!-- Persistent Logo -->
+        <a href="/" class="fixed-logo">VAREWAS</a>
+
+        <LanguageSelector currentLang={lang} />
+		<main>
+			<slot />
+		</main>
+
+        <script>
+            // Intersection Observer for Text Color Switching
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50% 0px -50% 0px', // check center
+                threshold: 0
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const theme = entry.target.getAttribute('data-theme-section');
+                        // Only switch to dark text (light-theme-active) if the section explicitly requests 'light'
+                        // AND we ensure the Shift section (which is usually the transition point) doesn't trigger it too early 
+                        // if the gradient hasn't caught up.
+                        // We will rely on strictly marking sections as 'light' only when they are over the white part of gradient.
+                        
+                        if (theme === 'light') {
+                            document.body.classList.add('light-theme-active');
+                            document.querySelector('.fixed-logo')?.classList.add('dark-text');
+                            document.querySelector('.language-selector')?.classList.add('dark-text');
+                        } else {
+                            document.body.classList.remove('light-theme-active');
+                            document.querySelector('.fixed-logo')?.classList.remove('dark-text');
+                            document.querySelector('.language-selector')?.classList.remove('dark-text');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('[data-theme-section]').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Fade-in Animation Observer
+            const fadeOptions = {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.1
+            };
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, fadeOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                fadeObserver.observe(section);
+            });
+        </script>
+
+        <style>
+            .fixed-logo {
+                position: fixed;
+                top: 2rem;
+                left: 2rem;
+                z-index: 100;
+                font-weight: 700;
+                font-size: 1.25rem;
+                text-decoration: none;
+                color: white;
+                mix-blend-mode: difference; /* Smart way to ensure visibility */
+                letter-spacing: -0.05em;
+            }
+
+            /* Fallback manual color switch */
+            .fixed-logo.dark-text {
+                color: var(--color-black);
+                mix-blend-mode: normal;
+            }
+
+            /* Global Text Color modifier */
+            :global(body.light-theme-active) {
+                color: var(--color-text-near-black);
+            }
+            
+            :global(body.light-theme-active) :global(.text-gray-300),
+            :global(body.light-theme-active) :global(.text-gray-500) {
+                color: var(--color-gray-700);
+            }
+            :global(body.light-theme-active) :global(.benefit-item) {
+                border-color: var(--color-gray-300);
+            }
+             :global(body.light-theme-active) :global(.benefit-item:hover) {
+                color: var(--color-black);
+            }
+        </style>
+	</body>
+</html>

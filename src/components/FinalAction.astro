@@ -1,0 +1,25 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="final" theme="light">
+  <div class="content">
+    <h2 class="text-hero mb-4">{t['final.headline']}</h2>
+    <p class="text-hero text-gray-500 mb-8">{t['final.text']}</p>
+    <p class="text-large">{t['final.subtext']}</p>
+  </div>
+</ScrollSection>
+
+<style>
+  .mb-4 { margin-bottom: 1rem; }
+  .mb-8 { margin-bottom: 2rem; }
+  .text-gray-500 { color: var(--color-gray-500); }
+</style>

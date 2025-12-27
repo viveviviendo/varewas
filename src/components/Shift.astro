@@ -1,0 +1,23 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="shift" theme="light">
+  <div class="content">
+    <h2 class="text-display mb-8">{t['shift.statement']}</h2>
+    <p class="text-large text-gray-500">{t['shift.support']}</p>
+  </div>
+</ScrollSection>
+
+<style>
+  .mb-8 { margin-bottom: 2rem; }
+  .text-gray-500 { color: var(--color-gray-500); }
+</style>

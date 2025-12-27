@@ -1,0 +1,35 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="what" theme="light">
+  <div class="content">
+    <div class="text-display mb-12">
+      <p>{t['what.list.1']}</p>
+      <p>{t['what.list.2']}</p>
+      <p>{t['what.list.3']}</p>
+      <p>{t['what.list.4']}</p>
+      <p>{t['what.list.5']}</p>
+    </div>
+    
+    <div class="space-y-4">
+        <p class="text-large text-gray-500">{t['what.text']}</p>
+        <p class="text-large font-medium">{t['what.key']}</p>
+    </div>
+  </div>
+</ScrollSection>
+
+<style>
+  .mb-12 { margin-bottom: 3rem; }
+  .space-y-4 > * + * { margin-top: 1rem; }
+  .text-gray-500 { color: var(--color-gray-500); }
+  .font-medium { font-weight: 500; }
+</style>

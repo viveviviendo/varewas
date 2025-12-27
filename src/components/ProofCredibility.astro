@@ -1,0 +1,28 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="proof" theme="light">
+  <div class="content">
+    <p class="text-uppercase mb-8">{t['proof.text']}</p>
+    
+    <div class="stats">
+      <p class="text-display text-green">{t['proof.data.1']}</p>
+      <p class="text-display text-green">{t['proof.data.2']}</p>
+    </div>
+  </div>
+</ScrollSection>
+
+<style>
+  .mb-8 { margin-bottom: 2rem; }
+  .stats > * + * { margin-top: 1rem; }
+  .text-green { color: #1e4d2b; } /* Dark Green */
+</style>

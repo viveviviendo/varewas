@@ -1,0 +1,56 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="how" theme="light">
+  <div class="process-flow">
+    <div class="step">
+        <span class="step-number">01</span>
+        <p class="text-large">{t['how.step.1']}</p>
+    </div>
+    <div class="step">
+        <span class="step-number">02</span>
+        <p class="text-large">{t['how.step.2']}</p>
+    </div>
+    <div class="step">
+        <span class="step-number">03</span>
+        <p class="text-large">{t['how.step.3']}</p>
+    </div>
+    <div class="step">
+        <span class="step-number">04</span>
+        <p class="text-large">{t['how.step.4']}</p>
+    </div>
+  </div>
+  
+  <div class="mt-20">
+    <p class="text-display">{t['how.final']}</p>
+  </div>
+</ScrollSection>
+
+<style>
+  .process-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    border-top: 1px solid var(--color-gray-700);
+    padding-top: 2rem;
+  }
+
+  .step-number {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    margin-bottom: 1rem;
+    font-family: monospace;
+  }
+  
+  .mt-20 { margin-top: 5rem; }
+</style>

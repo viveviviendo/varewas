@@ -1,0 +1,44 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="why" theme="light">
+  <ul class="benefit-list">
+    <li class="benefit-item text-display">{t['why.1']}</li>
+    <li class="benefit-item text-display">{t['why.2']}</li>
+    <li class="benefit-item text-display">{t['why.3']}</li>
+    <li class="benefit-item text-display">{t['why.4']}</li>
+    <li class="benefit-item text-display">{t['why.5']}</li>
+  </ul>
+</ScrollSection>
+
+<style>
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .benefit-item {
+    border-bottom: 1px solid var(--color-gray-700);
+    padding: 2rem 0;
+    transition: padding 0.3s ease, color 0.3s ease;
+    cursor: default;
+  }
+  
+  .benefit-item:first-child {
+    border-top: 1px solid var(--color-gray-700);
+  }
+  
+  .benefit-item:hover {
+    padding-left: 2rem;
+    color: var(--color-white);
+  }
+</style>

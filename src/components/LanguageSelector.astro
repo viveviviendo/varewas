@@ -1,0 +1,46 @@
+---
+import { languages } from '../i18n/ui';
+
+const { currentLang = 'en' } = Astro.props;
+---
+
+<nav class="language-selector">
+  {Object.entries(languages).map(([lang, label]) => (
+    <a 
+      href={`/${lang === 'en' ? 'en' : lang}`} 
+      class:list={["lang-link", { active: lang === currentLang }]}
+    >
+      {label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .language-selector {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    display: flex;
+    gap: 1rem;
+    mix-blend-mode: difference; /* Ensures visibility on both dark and light backgrounds */
+  }
+
+  .lang-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .lang-link:hover {
+    color: #fff;
+  }
+
+  .lang-link.active {
+    color: #fff;
+    font-weight: 700;
+  }
+</style>

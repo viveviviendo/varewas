@@ -1,0 +1,21 @@
+---
+import ScrollSection from './ScrollSection.astro';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: keyof typeof ui;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<ScrollSection id="problem" theme="dark">
+  <div class="content">
+    <p class="text-display mb-12">{t['problem.text']}</p>
+  </div>
+</ScrollSection>
+
+<style>
+  .mb-12 { margin-bottom: 3rem; }
+</style>
