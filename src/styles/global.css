@@ -207,3 +207,27 @@ h6 {
 .light-theme-text .text-gray-500 {
     color: var(--color-gray-700);
 }
+
+/* Force all light-themed sections to have black text permanently */
+[data-theme-section="light"] {
+    color: var(--color-text-near-black) !important;
+}
+
+[data-theme-section="light"] .text-display,
+[data-theme-section="light"] .text-large,
+[data-theme-section="light"] .text-body,
+[data-theme-section="light"] h1,
+[data-theme-section="light"] h2,
+[data-theme-section="light"] h3,
+[data-theme-section="light"] p,
+[data-theme-section="light"] li {
+    color: var(--color-text-near-black) !important;
+}
+
+[data-theme-section="light"] .text-gray-500 {
+    color: var(--color-gray-700) !important;
+}
+
+[data-theme-section="light"] .benefit-item:hover {
+    color: var(--color-black) !important;
+}
