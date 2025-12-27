@@ -73,7 +73,8 @@ body {
             #eaeaeb 35%,
             /* Midpoint gray to soften edge */
             var(--color-white) 60%,
-            var(--color-white) 100%);
+            #ffffff 95%,
+            #ffffff 100%);
     min-height: 100vh;
 }
 

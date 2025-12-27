@@ -53,7 +53,7 @@ export const ui = {
 
         'proof.text': 'This is not theory. It’s online projects.',
         'proof.data.1': '34M in carbon tokens already issued.',
-        'proof.data.2': 'AI SaaS asset verification platform in development.',
+        'proof.data.2': 'AI SaaS asset verification platform.',
 
         'final.headline': 'Start with the only thing that matters.',
         'final.text': 'Your asset.',
@@ -111,7 +111,7 @@ export const ui = {
 
         'proof.text': 'Esto no es teoría. Son proyectos online.',
         'proof.data.1': '34M en tokens de carbono ya emitidos.',
-        'proof.data.2': 'Plataforma SaaS de verificación de activos por IA en desarrollo.',
+        'proof.data.2': 'Plataforma SaaS de verificación de activos por IA.',
 
         'final.headline': 'Empieza con lo único que importa.',
         'final.text': 'Tu activo.',
@@ -169,7 +169,7 @@ export const ui = {
 
         'proof.text': 'Ce n’est pas de la théorie. Ce sont des projets en ligne.',
         'proof.data.1': '34M de tokens carbone déjà émis.',
-        'proof.data.2': 'Plateforme SaaS de vérification d’actifs par IA en développement.',
+        'proof.data.2': 'Plateforme SaaS de vérification d’actifs par IA.',
 
         'final.headline': 'Commencez par la seule chose qui compte.',
         'final.text': 'Votre actif.',
