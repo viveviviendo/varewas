@@ -1,21 +1,19 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { languages, ui, defaultLang } from '../i18n/ui';
 
 const lang = Astro.currentLocale || defaultLang;
 
-function getCurrentPathForLocale(locale: string) {
-  const currentPath = Astro.url.pathname;
-  const currentLang = Astro.currentLocale || defaultLang;
+function getLocalePath(locale: string, path: string) {
+  // Clean path to ensure no leading slash for consistency in logic
+  const cleanPath = path.replace(/^\//, '');
   
-  // Remove current lang prefix if present
-  let cleanPath = currentPath.replace(new RegExp(`^/${currentLang}`), '');
-  if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
-  
-  if (locale === defaultLang) {
-    return `/en${cleanPath}`;
+  if (cleanPath === '') {
+    // For root path: EN goes to /, others to /es, /fr
+    return locale === defaultLang ? '/' : `/${locale}`;
   }
-  return `/${locale}${cleanPath}`;
+  
+  // For other pages (features, etc): always include locale prefix /en/features, /es/features
+  return `/${locale}/${cleanPath}`;
 }
 
 const t = ui[lang as keyof typeof ui] || ui[defaultLang];
@@ -23,21 +21,21 @@ const t = ui[lang as keyof typeof ui] || ui[defaultLang];
 
 <header class="header glass-panel">
   <div class="container">
-    <a href={getRelativeLocaleUrl(lang, '/')} class="logo">
+    <a href={getLocalePath(lang, '')} class="logo">
       VAREWAS<span class="dot">.</span>
     </a>
     
     <nav class="nav-links">
-      <a href={getRelativeLocaleUrl(lang, 'features')}>{t['nav.features']}</a>
-      <a href={getRelativeLocaleUrl(lang, 'process')}>{t['nav.process']}</a>
-      <a href={getRelativeLocaleUrl(lang, 'contact')}>{t['nav.contact']}</a>
+      <a href={getLocalePath(lang, 'features')}>{t['nav.features']}</a>
+      <a href={getLocalePath(lang, 'process')}>{t['nav.process']}</a>
+      <a href={getLocalePath(lang, 'contact')}>{t['nav.contact']}</a>
     </nav>
 
     <div class="lang-selector">
       {Object.entries(languages).map(([key, label], index) => (
         <>
           <a 
-            href={getCurrentPathForLocale(key)} 
+            href={getLocalePath(key, '')} 
             class={`lang-link ${lang === key ? 'active' : ''}`}
           >
             {label}
