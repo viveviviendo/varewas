@@ -1,81 +1,30 @@
 ---
-// Detect browser language from Accept-Language header
-const supportedLangs = ['en', 'es', 'fr'];
-const defaultLang = 'en';
+import OnePageLayout from '../layouts/OnePageLayout.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Shift from '../components/Shift.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import WhatCanBeTokenized from '../components/WhatCanBeTokenized.astro';
+import WhyItMatters from '../components/WhyItMatters.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import ProofCredibility from '../components/ProofCredibility.astro';
+import FinalAction from '../components/FinalAction.astro';
+import Footer from '../components/Footer.astro';
+import { ui } from '../i18n/ui';
 
-const acceptLanguage = Astro.request.headers.get('accept-language') || '';
-const browserLang = acceptLanguage.split(',')[0].split('-')[0].toLowerCase();
-
-const targetLang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
-const redirectUrl = `/${targetLang}`;
+const lang = 'en';
+const t = ui[lang];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Instant redirect via meta refresh (0 seconds) -->
-  <meta http-equiv="refresh" content="0;url={redirectUrl}">
-  
-  <!-- Open Graph tags for link previews -->
-  <meta property="og:title" content="VAREWAS - Real World Asset Tokenization">
-  <meta property="og:description" content="Transform physical assets into digital tokens. Secure, transparent, and accessible tokenization platform.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://varewas.com">
-  <meta property="og:image" content="https://varewas.com/og-image.jpg">
-  
-  <!-- Twitter Card tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VAREWAS - Real World Asset Tokenization">
-  <meta name="twitter:description" content="Transform physical assets into digital tokens. Secure, transparent, and accessible tokenization platform.">
-  
-  <title>VAREWAS - Real World Asset Tokenization</title>
-  
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #14110f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-    
-    .logo-container {
-      text-align: center;
-      animation: fadeIn 0.3s ease-in;
-    }
-    
-    .logo-container img {
-      width: 120px;
-      height: 120px;
-      opacity: 0.9;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  </style>
-  
-  <script>
-    // Instant JavaScript redirect as backup
-    window.location.replace('{redirectUrl}');
-  </script>
-</head>
-<body>
-  <div class="logo-container">
-    <img src="/logo-varewas.svg" alt="VAREWAS Logo" />
-  </div>
-</body>
-</html>
+<OnePageLayout title={t['meta.title']} description={t['meta.description']} lang={lang}>
+  <Hero lang={lang} />
+  <Problem lang={lang} />
+  <Shift lang={lang} />
+  <BeforeAfter lang={lang} />
+  <WhatCanBeTokenized lang={lang} />
+  <WhyItMatters lang={lang} />
+  <HowItWorks lang={lang} />
+  <ProofCredibility lang={lang} />
+  <FinalAction lang={lang} />
+  <Footer lang={lang} />
+</OnePageLayout>
