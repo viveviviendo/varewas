@@ -43,25 +43,23 @@ const t = ui[lang] || ui['en']; // Fallback
             name="email"
             placeholder={t['cta.email_placeholder']}
             class="input-email"
-            required
-          />
+    required
+  />
 
-          <input
-            type="hidden"
-            name="_subject"
-            value="Nueva suscripción VAREWAS"
-          />
+  <input type="hidden" name="_subject" value="Nueva suscripción VAREWAS" />
+  <input type="hidden" name="_template" value="table" />
 
-          <input
-            type="hidden"
-            name="_template"
-            value="table"
-          />
+  <!-- REDIRECT A TU THANK YOU -->
+  <input
+    type="hidden"
+    name="_redirect"
+    value={`https://varewas.com${lang === 'en' ? '' : '/' + lang}/thank-you`}
+  />
 
-          <button type="submit" class="btn-subscribe">
-            {t['cta.subscribe_btn']}
-          </button>
-        </form>
+  <button type="submit" class="btn-subscribe">
+    {t['cta.subscribe_btn']}
+  </button>
+</form>
       </div>
 
     </div>
