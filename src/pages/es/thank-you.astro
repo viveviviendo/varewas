@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ui } from '../../i18n/ui';
+
+const lang = 'es';
+// Hardcoded translations for confirmation since they might not be in ui.ts
+const t = {
+  title: 'Gracias por ponerte en contacto',
+  text: 'Hemos recibido tu mensaje correctamente. Nuestro equipo se pondrá en contacto contigo lo antes posible.',
+  back: 'Volver al inicio'
+};
+---
+
+<Layout title={t.title} lang={lang}>
+  <main class="thank-you-container">
+    <div class="content">
+      <h1>{t.title}</h1>
+      <p>{t.text}</p>
+      <a href={`/${lang}`} class="btn-primary">{t.back}</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .thank-you-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-main);
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-black);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.8;
+  }
+</style>
