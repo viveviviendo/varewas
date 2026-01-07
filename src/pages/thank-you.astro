@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.currentLocale || defaultLang;
+// Simple translations for this page since it's new
+const t = {
+  title: {
+    es: 'Gracias por ponerte en contacto',
+    en: 'Thank you for reaching out',
+    fr: 'Merci de nous avoir contactés'
+  },
+  text: {
+    es: 'Hemos recibido tu mensaje correctamente. Nuestro equipo se pondrá en contacto contigo lo antes posible.',
+    en: 'We have received your message successfully. Our team will get in touch with you as soon as possible.',
+    fr: 'Nous avons bien reçu votre message. Notre équipe vous contactera dès que possible.'
+  },
+  back: {
+    es: 'Volver al inicio',
+    en: 'Back to home',
+    fr: 'Retour à l\'accueil'
+  }
+};
+
+const currentT = t.title[lang as keyof typeof t.title] ? t : { title: t.title.en, text: t.text.en, back: t.back.en };
+const locale = lang as keyof typeof t.title;
+---
+
+<Layout title={currentT.title[locale]} lang={lang}>
+  <main class="thank-you-container">
+    <div class="content">
+      <h1>{currentT.title[locale]}</h1>
+      <p>{currentT.text[locale]}</p>
+      <a href={`/${lang === defaultLang ? '' : lang}`} class="btn-primary">{currentT.back[locale]}</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .thank-you-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-main);
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-black);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.8;
+  }
+</style>
