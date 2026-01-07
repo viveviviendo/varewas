@@ -16,19 +16,26 @@ const t = ui[lang] || ui['en']; // Fallback to 'en' if lang is invalid
 
       <div class="actions">
         <a href="#" class="btn-primary">{t['cta.tell_us']}</a>
-        <a href={lang === 'en' ? '/contact' : `/${lang}/contact`} class="btn-secondary">{t['cta.contact']}</a>
+        <a href="#contact" class="btn-secondary">{t['cta.contact']}</a>
       </div>
       
-      <div class="subscribe highlight-box">
+      <div id="contact" class="subscribe highlight-box">
         <p class="text-small mb-4 font-bold">{t['cta.subscribe_text']}</p>
 
         <form 
-          class="subscribe-form" 
-          action="https://formspree.io/f/YOUR_SUBSCRIBE_FORM_ID" 
+          action="https://formspree.io/f/abcdwxyz" 
           method="POST"
         >
-          <input type="hidden" name="_next" value={lang === 'en' ? '/thank-you' : `/${lang}/thank-you`} />
-          <input type="email" name="email" placeholder={t['cta.email_placeholder']} class="input-email" required />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder={t['cta.email_placeholder']} 
+            class="input-email" 
+            required 
+          />
+          <input type="hidden" name="_subject" value="Nueva suscripción VAREWAS" />
+          <input type="hidden" name="_template" value="table" />
+          
           <button type="submit" class="btn-subscribe">{t['cta.subscribe_btn']}</button>
         </form>
       </div>
