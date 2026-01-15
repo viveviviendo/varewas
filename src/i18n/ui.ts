@@ -64,6 +64,12 @@ export const ui = {
         'cta.subscribe_text': 'Receive real insights about tokenization applied to real life. No hype. No noise.',
         'cta.subscribe_btn': 'Subscribe',
         'cta.email_placeholder': 'Your email address',
+        'cta.message_placeholder': 'Message / Project description',
+        'cta.send_message': 'Send message',
+
+        'popup.title': 'Thank you.',
+        'popup.text': 'We’ve received your message. We’ll get back to you shortly.',
+        'popup.back': 'Back to site',
     },
     es: {
         'meta.title': 'VAREWAS - Tokenización de Activos Reales',
@@ -122,6 +128,12 @@ export const ui = {
         'cta.subscribe_text': 'Recibe insights reales sobre tokenización aplicada a la vida real. Sin hype. Sin ruido.',
         'cta.subscribe_btn': 'Suscribirse',
         'cta.email_placeholder': 'Tu dirección de correo',
+        'cta.message_placeholder': 'Mensaje / Descripción del proyecto',
+        'cta.send_message': 'Enviar mensaje',
+
+        'popup.title': 'Gracias.',
+        'popup.text': 'Hemos recibido tu mensaje. Te contactaremos pronto.',
+        'popup.back': 'Volver al sitio',
     },
     fr: {
         'meta.title': 'VAREWAS - Tokenisation des Actifs Réels',
@@ -180,5 +192,11 @@ export const ui = {
         'cta.subscribe_text': 'Recevez de vrais aperçus sur la tokenisation appliquée à la vie réelle. Pas de hype. Pas de bruit.',
         'cta.subscribe_btn': 'S’abonner',
         'cta.email_placeholder': 'Votre adresse email',
+        'cta.message_placeholder': 'Message / Description du projet',
+        'cta.send_message': 'Envoyer le message',
+
+        'popup.title': 'Merci.',
+        'popup.text': 'Nous avons bien reçu votre message. Nous vous recontacterons sous peu.',
+        'popup.back': 'Retour au site',
     },
 } as const;
