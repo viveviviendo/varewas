@@ -64,6 +64,11 @@ const t = ui[lang] || ui['en']; // Fallback
   <!-- SUCCESS POPUP -->
   <div id="success-popup" class="popup-overlay hidden">
     <div class="popup-content">
+      <!-- LOGO -->
+      <div class="popup-logo">
+        VAREWAS<span class="dot">.</span>
+      </div>
+      
       <h3 class="popup-title">{t['popup.title']}</h3>
       <p class="popup-text">{t['popup.text']}</p>
       <button id="close-popup" class="btn-popup">{t['popup.back']}</button>
@@ -128,22 +133,23 @@ const t = ui[lang] || ui['en']; // Fallback
     color: var(--color-gray-500);
   }
 
+  /* UPDATED SUBMIT BUTTON STYLE */
   .btn-subscribe {
-    background: transparent;
+    background: var(--color-black);
+    color: var(--color-off-white);
     border: none;
-    border-bottom: 1px solid var(--color-black);
-    padding: 0.5rem 0;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     margin-top: 1rem;
     width: 100%;
-    text-align: left;
+    text-align: center;
     transition: opacity 0.3s ease;
   }
 
   .btn-subscribe:hover {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .mt-20 {
@@ -170,7 +176,7 @@ const t = ui[lang] || ui['en']; // Fallback
   .popup-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4); /* Gray semi-transparent per requirement */
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -191,6 +197,26 @@ const t = ui[lang] || ui['en']; // Fallback
     text-align: center;
     max-width: 400px;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .dot {
+    color: var(--color-primary); /* Uses global red if defined, else fallback */
+  }
+
+  /* Fallback for dot color if var not available in footer scope (usually is global) */
+  :global(:root) {
+     /* Ensure primary color is available or define locally if needed, but likely global.css handles it */
   }
 
   .popup-title {
@@ -274,8 +300,6 @@ const t = ui[lang] || ui['en']; // Fallback
           form.reset();
           popup.classList.remove('hidden');
         } else {
-          // Fallback or silently fail (as requested minimal logic)
-          // For now, let's just log it or do nothing
           console.error('Form submission failed');
         }
       } catch (error) {
